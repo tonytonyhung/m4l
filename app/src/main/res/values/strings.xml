@@ -1,3 +1,10 @@
 <resources>
     <string name="app_name">Music For Life</string>
+
+    <string name="facebook_login_error">Facebook login error! please login again</string>
+    <string name="login_server_error">Your access token facebook is invalid or not found, please login again !</string>
+
+    <string name="no_connect_internet">No internet connect.</string>
+    <string name="server_connect_timeout">Server Connection timeout!</string>
+    <string name="server_maintain">The server is under maintenance. PLease try again later!</string>
 </resources>
