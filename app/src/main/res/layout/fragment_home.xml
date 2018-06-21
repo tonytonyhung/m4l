@@ -10,21 +10,13 @@
     <android.support.design.widget.TabLayout
         android:id="@+id/sliding_tabs"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="50dp"
         android:layout_alignParentTop="true"
-        app:tabMode="fixed"/>
+        app:tabMode="scrollable"/>
 
     <android.support.v4.view.ViewPager
-        android:id="@+id/pager"
+        android:id="@+id/v_pager"
         android:layout_height="match_parent"
         android:layout_width="match_parent"
-        android:layout_alignBottom="@+id/sliding_tabs"
-        android:layout_alignTop="@+id/linear_music"/>
-
-    <LinearLayout
-        android:id="@+id/linear_music"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:orientation="horizontal"/>
+        android:layout_below="@+id/sliding_tabs"/>
 </RelativeLayout>

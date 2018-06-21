@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="home_tab">
+        <item>Song</item>
+        <item>Top 30 Playlist</item>
+        <item>Your playlist</item>
+        <item>Your song</item>
+        <item>Conversation</item>
+    </string-array>
+</resources>
