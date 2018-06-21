@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="padding_small">@dimen/_10sdp</dimen>
+    <dimen name="padding_normal">@dimen/_20sdp</dimen>
+
+    <dimen name="margin_small">@dimen/_10sdp</dimen>
+
+    <dimen name="height_search">@dimen/_30sdp</dimen>
+    <dimen name="radius_search">@dimen/_10sdp</dimen>
+</resources>

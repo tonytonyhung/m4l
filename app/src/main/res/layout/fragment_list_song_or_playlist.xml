@@ -1,17 +1,25 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent">
+                android:layout_height="match_parent"
+                android:paddingLeft="@dimen/padding_small"
+                android:paddingRight="@dimen/padding_small">
 
     <EditText
         android:id="@+id/etxt_search"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="@dimen/height_search"
         android:layout_alignParentTop="true"
-        android:layout_marginTop="100dp"/>
+        android:layout_marginTop="@dimen/margin_small"
+        android:layout_marginBottom="@dimen/margin_small"
+        android:background="@drawable/bg_etxt_search"
+        android:drawableRight="@drawable/ic_search"
+        android:maxLines="1"
+        android:paddingLeft="@dimen/padding_small"
+        android:paddingRight="@dimen/padding_small"/>
 
     <android.support.v7.widget.RecyclerView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_alignBottom="@+id/etxt_search"/>
+        android:layout_below="@+id/etxt_search"/>
 </RelativeLayout>
