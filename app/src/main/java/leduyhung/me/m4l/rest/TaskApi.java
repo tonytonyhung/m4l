@@ -21,7 +21,7 @@ public interface TaskApi {
 
     @GET("/v1/songs")
     Call<Song> getListSong(@Header("version") int version, @Header("pakage") String pakage,
-                           @Query("name") String name, @Query("page") int page, @Query("type") int type);
+                           @Query("name") String key_search, @Query("page") int page, @Query("type") int type);
 
     @GET("/v1/playlists")
     Call<Playlist> getListPlaylist(@Header("version") int version, @Header("pakage") String pakage,

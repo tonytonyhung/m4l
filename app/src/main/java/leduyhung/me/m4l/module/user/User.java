@@ -17,7 +17,7 @@ import java.util.concurrent.TimeoutException;
 
 import leduyhung.me.m4l.R;
 import leduyhung.me.m4l.module.user.data.UserInfo;
-import leduyhung.me.m4l.module.user.message.MessageForActivity;
+import leduyhung.me.m4l.module.message.MessageForActivity;
 import leduyhung.me.m4l.rest.BaseRestApi;
 import leduyhung.me.m4l.util.CacheUtil;
 import leduyhung.me.m4l.util.ClientUtil;

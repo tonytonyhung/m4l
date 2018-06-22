@@ -11,6 +11,7 @@ import java.util.List;
 import java.util.concurrent.TimeoutException;
 
 import leduyhung.me.m4l.module.song.data.SongInfo;
+import leduyhung.me.m4l.module.message.GetListSongMessage;
 import leduyhung.me.m4l.rest.BaseRestApi;
 import leduyhung.me.m4l.util.ClientUtil;
 import retrofit2.Call;
@@ -41,30 +42,37 @@ public class Song {
         return data;
     }
 
-    public void getListSong(final Context ctx, String name, int page, int type) {
+    public void getListSong(final Context ctx, String key_search, int page, int type, final int fromId) {
 
         if (!((Activity) ctx).isFinishing()) {
-            call = BaseRestApi.request().getListSong(ClientUtil.getVersionCode(ctx), ClientUtil.getPakageName(ctx), name, page, type);
+            call = BaseRestApi.request().getListSong(ClientUtil.getVersionCode(ctx), ClientUtil.getPakageName(ctx), key_search, page, type);
             call.enqueue(new Callback<Song>() {
                 @Override
                 public void onResponse(Call<Song> call, Response<Song> response) {
                     if (response.isSuccessful()) {
-
+                        EventBus.getDefault().post(new GetListSongMessage(GetListSongMessage.StatusResponse.SUCCESS, "", fromId,
+                                response.body()));
                     } else {
-
+                        EventBus.getDefault().post(new GetListSongMessage(GetListSongMessage.StatusResponse.NOT_FOUND, "", fromId,
+                                response.body()));
                     }
                 }
 
                 @Override
                 public void onFailure(Call<Song> call, Throwable t) {
                     if (!ClientUtil.isConnectInternet(ctx)) {
-
+                        EventBus.getDefault().post(new GetListSongMessage(GetListSongMessage.StatusResponse.NO_INTERNET_CONNECTED,
+                                "", fromId, null));
                     } else {
 
                         if (t instanceof TimeoutException || t instanceof SocketTimeoutException || t instanceof UnknownHostException) {
 
+                            EventBus.getDefault().post(new GetListSongMessage(GetListSongMessage.StatusResponse.TIMEOUT_SOCKET,
+                                    "", fromId, null));
                         } else {
 
+                            EventBus.getDefault().post(new GetListSongMessage(GetListSongMessage.StatusResponse.MAINTAIN,
+                                    "", fromId, null));
                         }
                     }
                 }

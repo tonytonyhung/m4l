@@ -9,6 +9,7 @@ import android.support.v4.app.FragmentPagerAdapter;
 import java.util.List;
 
 import leduyhung.me.m4l.R;
+import leduyhung.me.m4l.ui.playlist.ListPlayListFragment;
 import leduyhung.me.m4l.ui.song.ListSongFragment;
 
 public class HomePagerAdapter extends FragmentPagerAdapter {
@@ -33,9 +34,9 @@ public class HomePagerAdapter extends FragmentPagerAdapter {
             case 4:
                 break;
             default:
-                break;
+                return new ListSongFragment();
         }
-        return new ListSongFragment();
+        return new ListPlayListFragment();
     }
 
     @Override

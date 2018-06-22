@@ -1,4 +1,4 @@
-package leduyhung.me.m4l.module.user.message;
+package leduyhung.me.m4l.module.message;
 
 public class MessageForActivity {
 
