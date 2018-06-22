@@ -32,6 +32,9 @@ public class SongRecyclerAdapter extends RecyclerView.Adapter {
     @Override
     public void onBindViewHolder(@NonNull RecyclerView.ViewHolder holder, int position) {
         ((ItemVIew) holder).tName.setText(data.get(position).getName());
+        ((ItemVIew) holder).tAuthor.setText(data.get(position).getAuth());
+        ((ItemVIew) holder).tLove.setText(data.get(position).getLove() + "");
+        ((ItemVIew) holder).tTotalView.setText(data.get(position).getTotal_view() + "");
     }
 
     @Override

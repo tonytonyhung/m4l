@@ -13,6 +13,7 @@ public class SongInfo implements Parcelable {
     private int total_view;
     private int type;
     private int love;
+    private boolean isPlay;
 
     public int getId() {
         return id;
@@ -46,6 +47,14 @@ public class SongInfo implements Parcelable {
         return love;
     }
 
+    public boolean isPlay() {
+        return isPlay;
+    }
+
+    public void setPlay(boolean play) {
+        isPlay = play;
+    }
+
     SongInfo(Parcel in) {
 
         this.id = in.readInt();
@@ -56,6 +65,7 @@ public class SongInfo implements Parcelable {
         this.total_view = in.readInt();
         this.type = in.readInt();
         this.love = in.readInt();
+        this.isPlay = in.readByte() != 0;
     }
 
     public static final Creator<SongInfo> CREATOR = new Creator<SongInfo>() {
@@ -86,5 +96,6 @@ public class SongInfo implements Parcelable {
         parcel.writeInt(this.total_view);
         parcel.writeInt(this.type);
         parcel.writeInt(this.love);
+        parcel.writeByte((byte) (isPlay ? 1 : 0));
     }
 }

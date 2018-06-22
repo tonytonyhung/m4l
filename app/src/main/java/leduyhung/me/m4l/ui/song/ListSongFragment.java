@@ -12,6 +12,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.EditText;
+import android.widget.Toast;
 
 import org.greenrobot.eventbus.EventBus;
 import org.greenrobot.eventbus.Subscribe;
@@ -25,6 +26,8 @@ import leduyhung.me.m4l.module.song.Song;
 import leduyhung.me.m4l.module.message.GetListSongMessage;
 import leduyhung.me.m4l.module.song.data.SongInfo;
 import leduyhung.me.m4l.ui.song.adapter.SongRecyclerAdapter;
+import leduyhung.me.m4l.util.ClientUtil;
+import leduyhung.me.m4l.util.ToastUtil;
 
 public class ListSongFragment extends Fragment {
 
@@ -42,7 +45,6 @@ public class ListSongFragment extends Fragment {
         this.mContext = context;
         EventBus.getDefault().register(this);
     }
-
 
 
     @Nullable
@@ -75,14 +77,20 @@ public class ListSongFragment extends Fragment {
     public void onReceiveMessage(GetListSongMessage message) {
         switch (message.getStatus()) {
             case SUCCESS:
-                lData.addAll(message.getData().getData());
+                if (message.getData().getCurrent_page() == 1) {
+                    lData.addAll(message.getData().getData());
+                }
                 adap.notifyDataSetChanged();
                 break;
             case NOT_FOUND:
                 break;
             case NO_INTERNET_CONNECTED:
+                ToastUtil.newInstance().showToast(mContext, mContext.getResources().getString(R.string.no_connect_internet),
+                        Toast.LENGTH_SHORT);
                 break;
             case TIMEOUT_SOCKET:
+                ToastUtil.newInstance().showToast(mContext, mContext.getResources().getString(R.string.server_maintain),
+                        Toast.LENGTH_SHORT);
                 break;
             case MAINTAIN:
                 break;
