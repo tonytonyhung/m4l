@@ -41,10 +41,10 @@ public class Song {
         return data;
     }
 
-    public void getListSong(final Context ctx, String name, int page) {
+    public void getListSong(final Context ctx, String name, int page, int type) {
 
-        if (call == null && !((Activity) ctx).isFinishing()) {
-            call = BaseRestApi.request().getListSong(ClientUtil.getVersionCode(ctx), ClientUtil.getPakageName(ctx), page);
+        if (!((Activity) ctx).isFinishing()) {
+            call = BaseRestApi.request().getListSong(ClientUtil.getVersionCode(ctx), ClientUtil.getPakageName(ctx), name, page, type);
             call.enqueue(new Callback<Song>() {
                 @Override
                 public void onResponse(Call<Song> call, Response<Song> response) {
@@ -70,6 +70,11 @@ public class Song {
                 }
             });
         }
+    }
+
+    public void cancelRequestSong() {
+        if (call.isExecuted() && !call.isCanceled())
+            call.cancel();
     }
 
     public void loveSong(final Context ctx) {
